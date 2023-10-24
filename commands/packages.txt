@@ -1,0 +1,11 @@
+# System diag
+sudo htop lsof strace gptfdisk dosfstools smartmontools criu
+# Network
+curl wget dhcpcd nmap
+# pacman
+pacman-contrib pacman-mirrorlist
+# cli
+screen
+
+# CPU boot firmware
+intel-ucode amd-ucode

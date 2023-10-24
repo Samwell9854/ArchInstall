@@ -1,0 +1,7 @@
+sudo pacman -S sway swaylock swayidle swaybg alacritty waybar wofi xorg-xwayland xorg-xlsclients qt5-wayland glfw-wayland
+# copy /usr/share/wayland-sessions/sway.desktop
+# Select pipewire-jack
+sudo usermod -a -G seat samuel
+sudo systemctl enable seatd.service
+sudo systemctl start seatd.service
+# copy /home/samuel/.config/sway

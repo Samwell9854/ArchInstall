@@ -1,0 +1,26 @@
+passwd
+ln -sf /usr/share/zoneinfo/America/Montreal /etc/localtime
+date
+hwclock --systohc
+echo 'LANG=en_CA.UTF-8' > /etc/locale.conf
+echo 'LANGUAGE=en_CA:en_US:en:C:fr_CA:fr_FR:fr' >> /etc/locale.conf
+echo 'LC_TIME=en_CA.UTF-8' >> /etc/locale.conf
+echo 'LC_COLLATE=C' >> /etc/locale.conf
+echo 'lausercosamtux' > /etc/hostname
+locale-gen
+pacman -S vim sudo base-devel git less intel-ucode amd-ucode
+vim /etc/hosts
+visudo
+useradd -m -G games,network,wheel,audio,optical,storage,video samuel
+cp /etc/skel/.* /home/samuel/
+chown -R samuel:samuel /home/samuel
+passwd samuel
+# add Arch ZFS (https://wiki.archlinux.org/title/Unofficial_user_repositories#archzfs) to /etc/pacman.conf
+# sign the key with the Key-ID found in previous link (3 following commands)
+pacman-key --populate archlinux
+pacman-key --recv-keys F75D9D76
+#pacman-key --finger F75D9D76
+pacman-key --lsign-key F75D9D76
+pacman -Syy archlinux-keyring --noconfirm
+su samuel
+

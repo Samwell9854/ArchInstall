@@ -1,0 +1,16 @@
+# source: https://github.com/eoli3n/archiso-zfs
+curl -s https://raw.githubusercontent.com/eoli3n/archiso-zfs/master/init | bash
+gdisk /dev/nvme0n1
+# 2 partitions - part1: 500M type EF00 - part2: all type BF00
+# gdisk commands order:
+o
+y
+n
+# 2x enter
++500M
+EF00
+n
+# 3x enter
+BF00
+w
+y

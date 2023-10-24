@@ -1,0 +1,7 @@
+sudo mkinitcpio -p linux
+mv /etc/resolv.conf /etc/resolv.conf.bak
+ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
+# add 'quiet' to /boot/loader/entries/arch.conf options IF no errors are returned during boot
+
+zfs mount -a
+for i in data data/home data/home/root data/home/samuel data/home/samuel/Downloads var/log; do zfs set canmount=off zroot/$i; zfs set canmount=on zroot/$i; done

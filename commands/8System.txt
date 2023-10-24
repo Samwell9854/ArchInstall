@@ -1,0 +1,4 @@
+sudo pacman -S vivaldi vivaldi-ffmpeg-codecs libva-utils nvtop
+yay -S vivaldi-update-ffmpeg-hook libva-nvidia-driver
+# copy ~/.config/vivaldi-stable.conf
+
