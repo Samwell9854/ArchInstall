@@ -44,6 +44,10 @@ mkdir /mnt/boot
 mount /dev/nvme0n1p1 /mnt/efi
 pacstrap /mnt base
 genfstab -U -p /mnt >> /mnt/etc/fstab
-# erase all lines but '/efi' and 'swap'
-vim /mnt/etc/locale.gen
+sed -i '/zroot/d' /mnt/etc/fstab
+echo '/efi/env/org.zectl-default   /boot     none    rw,defaults,errors=remount-ro,bind    0 0' >> /mnt/etc/fstab
+sed -i 's/#en_CA.UTF-8 UTF-8/en_CA.UTF-8 UTF-8/' /mnt/etc/locale.gen
+sed -i 's/#fr_CA.UTF-8 UTF-8/fr_CA.UTF-8 UTF-8/' /mnt/etc/locale.gen
+cp -r ../../ArchInstall /mnt/root/
+echo cd in /root/ArchInstall to continue
 arch-chroot /mnt
