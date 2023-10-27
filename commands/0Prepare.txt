@@ -6,6 +6,7 @@ pacman -Syy
 #pacman -Syu    # skippable?
 pacman -S git
 git clone https://github.com/Samwell9854/ArchInstall.git
+# Skip rest of this file (to test)
 gdisk /dev/nvme0n1
 # 2 partitions - part1: 500M type EF00 - part2: all type BF00
 # gdisk commands order:

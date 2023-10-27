@@ -1,5 +1,0 @@
-umount /mnt/boot
-umount /mnt/efi
-swapoff /dev/zvol/zroot/swap
-zfs umount -a
-zpool export zroot

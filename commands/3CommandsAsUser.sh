@@ -1,12 +1,12 @@
-cd
-mkdir AUR
-cd AUR
+mkdir ~/AUR
+cd ~/AUR
 git clone https://aur.archlinux.org/yay.git
 cd yay/
 makepkg -si
-echo ***** Select mkinitcpio *****
+#echo ***** Select mkinitcpio *****
 # CHANGE TO DKMS
-yay -S zfs-linux mkinitcpio-sd-zfs zectl
+#yay -S zfs-linux mkinitcpio-sd-zfs
+yay -S zfs-dkms zfsbootmenu
 exit
 
 # if a package cannot be resolved, specific version may need to be manually installed)
