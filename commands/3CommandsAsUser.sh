@@ -7,7 +7,7 @@ makepkg -si
 # CHANGE TO DKMS
 #yay -S zfs-linux mkinitcpio-sd-zfs
 yay -S zfs-dkms zfsbootmenu
-exit
+echo Done as user, you may 'exit' back to root
 
 # if a package cannot be resolved, specific version may need to be manually installed)
 # https://archive.archlinux.org/

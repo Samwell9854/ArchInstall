@@ -14,6 +14,11 @@ sgdisk --zap-all "$BOOT_DISK"
 sgdisk -n "${BOOT_PART}:1m:+512m" -t "${BOOT_PART}:ef00" "$BOOT_DISK"
 sgdisk -n "${POOL_PART}:0m:-10m" -t "${POOL_PART}:bf00" "$POOL_DISK"
 
+mkdir /etc/zfs/zfs-list.cache
+touch /etc/zfs/zfs-list.cache/zroot
+systemctl enable zfs.target
+systemctl enable zfs-zed.service --now
+
 zpool create -f -o ashift=12                    \
              -O compression=zstd-fast           \
              -O acltype=posixacl                \
@@ -25,7 +30,7 @@ zpool create -f -o ashift=12                    \
              -O canmount=off                    \
              -O devices=off                     \
              -o autotrim=on                     \
-             -o compatibility=openzfs-2.2-linux \
+             -o compatibility=openzfs-2.1-linux \
              -m none                            \
              zroot "$POOL_DEVICE"
 zfs create -o mountpoint=none zroot/ROOT
@@ -61,11 +66,17 @@ cp /etc/zfs/zpool.cache /mnt/etc/zfs/zpool.cache
 mkfs.vfat -F32 "$BOOT_DEVICE"
 mkdir -p /mnt/boot/efi
 mount /dev/nvme0n1p1 /mnt/boot/efi
+
+mkdir /mnt/etc/zfs/zfs-list.cache
+mv /etc/zfs/zfs-list.cache/zroot /mnt/etc/zfs/zfs-list.cache/zroot
+ln -s /mnt/etc/zfs/zfs-list.cache/zroot /etc/zfs/zfs-list.cache/zroot
+
+sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 12/' /etc/pacman.conf
 pacstrap /mnt base
 genfstab -U -p /mnt >> /mnt/etc/fstab
 sed -i '/zroot/d' /mnt/etc/fstab
 sed -i 's/#en_CA.UTF-8 UTF-8/en_CA.UTF-8 UTF-8/' /mnt/etc/locale.gen
 sed -i 's/#fr_CA.UTF-8 UTF-8/fr_CA.UTF-8 UTF-8/' /mnt/etc/locale.gen
 cp -r ../../ArchInstall /mnt/root/
-echo cd in /root/ArchInstall to continue
+echo cd in /root/ArchInstall/commands to continue
 arch-chroot /mnt
