@@ -22,6 +22,7 @@ systemctl enable zfs-zed.service
 systemctl enable zfs-scrub-weekly@zroot.timer
 zgenhostid $(hostid)
 #mkinitcpio -p linux
+systemctl enable systemd-timesyncd
 systemctl enable systemd-networkd.service
 systemctl enable systemd-resolved.service
 systemctl enable paccache.timer #does not exist??

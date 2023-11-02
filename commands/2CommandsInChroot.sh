@@ -1,6 +1,3 @@
-source /etc/os-release
-export ID
-
 echo password for root
 passwd
 ln -sf /usr/share/zoneinfo/America/Montreal /etc/localtime
@@ -11,13 +8,16 @@ echo 'LANG=en_CA.UTF-8' > /etc/locale.conf
 echo 'LC_COLLATE=C' >> /etc/locale.conf
 echo 'lausercosamtux' > /etc/hostname
 locale-gen
+source /etc/locale.conf
 sed -i 's/#Color/Color/' /etc/pacman.conf
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 12/' /etc/pacman.conf
 sed -i 's/#IgnorePkg   =/IgnorePkg   = zfs-dkms/' /etc/pacman.conf
 pacman --noconfirm -S vim sudo base-devel git less intel-ucode amd-ucode linux linux-headers efibootmgr pacman-contrib
 echo '127.0.0.1 lausercotux localhost' >> /etc/hosts
 echo '::1 localhost' >> /etc/hosts
-visudo
+chmod 740 /etc/sudoers
+sed -i 's/# %wheel ALL=(ALL:ALL) NOPASSWD: ALL/%wheel ALL=(ALL:ALL) NOPASSWD: ALL/' /etc/sudoers
+chmod 440 /etc/sudoers
 useradd -m -G games,network,wheel,audio,optical,storage,video samuel
 cp /etc/skel/.* /home/samuel/
 chown -R samuel:samuel /home/samuel
