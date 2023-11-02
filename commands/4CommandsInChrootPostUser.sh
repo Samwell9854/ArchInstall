@@ -1,3 +1,5 @@
+source /etc/os-release
+export ID
 mkdir /etc/pacman.d/hooks
 cp -r ../files/* /
 #systemctl enable systemd-boot-update.service
