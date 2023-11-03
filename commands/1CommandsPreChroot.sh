@@ -54,7 +54,6 @@ mkswap -f /dev/zvol/zroot/swap
 #create? usr/local var/games var/mail var/snap var/www var/lib/AccountsService var/lib/docker var/lib/libvirt var/lib/nfs
 # tmpfs?
 zpool export zroot
-#zpool import -N -d /dev/disk/by-id -R /mnt zroot
 zpool import -N -R /mnt zroot
 zfs mount zroot/ROOT/${ID}
 zfs mount -a
@@ -75,6 +74,7 @@ sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 12/' /etc/pacman.conf
 pacstrap /mnt base
 genfstab -U -p /mnt >> /mnt/etc/fstab
 sed -i '/zroot/d' /mnt/etc/fstab
+sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /mnt/etc/locale.gen
 sed -i 's/#en_CA.UTF-8 UTF-8/en_CA.UTF-8 UTF-8/' /mnt/etc/locale.gen
 sed -i 's/#fr_CA.UTF-8 UTF-8/fr_CA.UTF-8 UTF-8/' /mnt/etc/locale.gen
 cp -r ../../ArchInstall /mnt/root/

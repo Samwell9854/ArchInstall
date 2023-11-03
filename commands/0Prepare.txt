@@ -1,5 +1,5 @@
-pacman-key --init
-pacman-key --populate
+#pacman-key --init
+#pacman-key --populate
 curl -s https://raw.githubusercontent.com/eoli3n/archiso-zfs/master/init | bash
 # source: https://github.com/eoli3n/archiso-zfs
 pacman -Syy
