@@ -11,7 +11,7 @@ locale-gen
 source /etc/locale.conf
 sed -i 's/#Color/Color/' /etc/pacman.conf
 sed -i 's/#ParallelDownloads.*/ParallelDownloads = 12/' /etc/pacman.conf
-sed -i 's/#IgnorePkg.*/IgnorePkg   = zfs-dkms/' /etc/pacman.conf
+#sed -i 's/#IgnorePkg.*/IgnorePkg   = zfs-dkms/' /etc/pacman.conf
 pacman --noconfirm -S vim sudo base-devel git less intel-ucode amd-ucode linux linux-headers efibootmgr pacman-contrib
 echo '127.0.0.1 lausercotux localhost' >> /etc/hosts
 echo '::1 localhost' >> /etc/hosts

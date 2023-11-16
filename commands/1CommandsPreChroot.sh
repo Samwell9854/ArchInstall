@@ -6,6 +6,7 @@ export BOOT_DEVICE="${BOOT_DISK}p${BOOT_PART}"
 export POOL_DISK="/dev/nvme0n1"
 export POOL_PART="2"
 export POOL_DEVICE="${POOL_DISK}p${POOL_PART}"
+zgenhostid -f
 
 wipefs -a "$POOL_DISK"
 wipefs -a "$BOOT_DISK"
@@ -16,7 +17,7 @@ sgdisk -n "${POOL_PART}:0m:-10m" -t "${POOL_PART}:bf00" "$POOL_DISK"
 
 mkdir /etc/zfs/zfs-list.cache
 touch /etc/zfs/zfs-list.cache/zroot
-systemctl enable zfs.target
+systemctl enable zfs.target --now
 systemctl enable zfs-zed.service --now
 
 zpool create -f -o ashift=12                    \
@@ -78,5 +79,6 @@ sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /mnt/etc/locale.gen
 sed -i 's/#en_CA.UTF-8 UTF-8/en_CA.UTF-8 UTF-8/' /mnt/etc/locale.gen
 sed -i 's/#fr_CA.UTF-8 UTF-8/fr_CA.UTF-8 UTF-8/' /mnt/etc/locale.gen
 cp -r ../../ArchInstall /mnt/root/
+cp /etc/hostid /mnt/etc
 echo cd in /root/ArchInstall/commands to continue
 arch-chroot /mnt

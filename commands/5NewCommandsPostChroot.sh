@@ -10,10 +10,10 @@ export POOL_DEVICE="${POOL_DISK}p${POOL_PART}"
 
 efibootmgr -c -d "$BOOT_DISK" -p "$BOOT_PART" \
     -L "ZFSBootMenu (Backup)" \
-    -l '\EFI\zbm\vmlinuz-backup.EFI'
+    -l '\EFI\zbm\vmlinuz-linux-backup.EFI'
 efibootmgr -c -d "$BOOT_DISK" -p "$BOOT_PART" \
     -L "ZFSBootMenu" \
-    -l '\EFI\zbm\vmlinuz.EFI'
+    -l '\EFI\zbm\vmlinuz-linux.EFI'
 swapoff /dev/zvol/zroot/swap
 umount -n -R /mnt
 zfs umount -a
