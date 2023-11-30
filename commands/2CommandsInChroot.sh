@@ -1,3 +1,5 @@
+sed -i 's/mnt\///' /etc/zfs/zfs-list.cache/zroot
+sed -i 's/mnt//' /etc/zfs/zfs-list.cache/zroot
 echo password for root
 passwd
 ln -sf /usr/share/zoneinfo/America/Montreal /etc/localtime
