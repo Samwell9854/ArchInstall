@@ -1,11 +1,10 @@
-sed -i 's/mnt\///' /etc/zfs/zfs-list.cache/zroot
-sed -i 's/mnt//' /etc/zfs/zfs-list.cache/zroot
+# Configure the OS + ZFS repo
 echo password for root
 passwd
 ln -sf /usr/share/zoneinfo/America/Montreal /etc/localtime
 #hwclock --systohc
 echo 'LANG=en_CA.UTF-8' > /etc/locale.conf
-echo 'LANGUAGE=en_CA:en_US:en:C:fr_CA:fr' >> /etc/locale.conf
+echo 'LANGUAGE=en_CA:en_US:en:C' >> /etc/locale.conf
 echo 'LC_TIME=en_CA.UTF-8' >> /etc/locale.conf
 echo 'LC_COLLATE=C' >> /etc/locale.conf
 echo 'lausercosamtux' > /etc/hostname
@@ -14,7 +13,10 @@ source /etc/locale.conf
 sed -i 's/#Color/Color/' /etc/pacman.conf
 sed -i 's/#ParallelDownloads.*/ParallelDownloads = 12/' /etc/pacman.conf
 #sed -i 's/#IgnorePkg.*/IgnorePkg   = zfs-dkms/' /etc/pacman.conf
-pacman --noconfirm -S vim sudo base-devel git less intel-ucode amd-ucode linux linux-headers efibootmgr pacman-contrib
+pacman -Syy
+pacman -Fy
+pacman --noconfirm -S nvim sudo base-devel git less intel-ucode amd-ucode linux linux-headers efibootmgr pacman-contrib ntfs-3g
+echo 'EDITOR=nvim' >> /etc/environment
 echo '127.0.0.1 lausercotux localhost' >> /etc/hosts
 echo '::1 localhost' >> /etc/hosts
 chmod 740 /etc/sudoers

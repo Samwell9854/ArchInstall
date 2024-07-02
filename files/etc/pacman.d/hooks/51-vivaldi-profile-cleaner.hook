@@ -1,0 +1,10 @@
+[Trigger]
+Operation = Install
+Operation = Upgrade
+Type = Package
+Target = vivaldi
+
+[Action]
+Description = Vacuum and reindex SQLite DB used by Vivaldi
+When = PostTransaction
+Exec = su -c '/usr/bin/profile-cleaner v' samuel

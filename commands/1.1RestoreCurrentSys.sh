@@ -1,3 +1,4 @@
+# Use this instead of CommandsPreChroot to mount the existing installation
 source /etc/os-release
 export ID
 export BOOT_DISK="/dev/nvme0n1"

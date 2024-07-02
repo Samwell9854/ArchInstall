@@ -1,3 +1,4 @@
+# Configuring entries in computer UEFI
 # amnesic
 source /etc/os-release
 export ID

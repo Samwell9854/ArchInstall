@@ -1,8 +1,8 @@
+# First two commands commented in, use if curl cmd doesn't work
 #pacman-key --init
 #pacman-key --populate
+# Add ZFS
 curl -s https://raw.githubusercontent.com/eoli3n/archiso-zfs/master/init | bash
 # source: https://github.com/eoli3n/archiso-zfs
 pacman -Syy
-#pacman -Syu    # skippable?
-pacman -S git
 git clone https://github.com/Samwell9854/ArchInstall.git

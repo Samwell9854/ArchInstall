@@ -1,3 +1,4 @@
+# Configure disk and partition, then arch-chroot
 source /etc/os-release
 export ID
 export BOOT_DISK="/dev/nvme0n1"
@@ -13,7 +14,7 @@ wipefs -a "$BOOT_DISK"
 sgdisk --zap-all "$POOL_DISK"
 sgdisk --zap-all "$BOOT_DISK"
 sgdisk -n "${BOOT_PART}:1m:+512m" -t "${BOOT_PART}:ef00" "$BOOT_DISK"
-sgdisk -n "${POOL_PART}:0m:-10m" -t "${POOL_PART}:bf00" "$POOL_DISK"
+sgdisk -n "${POOL_PART}:0:0" -t "${POOL_PART}:bf00" "$POOL_DISK"
 
 mkdir /etc/zfs/zfs-list.cache
 touch /etc/zfs/zfs-list.cache/zroot
@@ -68,8 +69,7 @@ mkdir -p /mnt/boot/efi
 mount "$BOOT_DEVICE" /mnt/boot/efi
 
 mkdir /mnt/etc/zfs/zfs-list.cache
-mv /etc/zfs/zfs-list.cache/zroot /mnt/etc/zfs/zfs-list.cache/zroot
-ln -s /mnt/etc/zfs/zfs-list.cache/zroot /etc/zfs/zfs-list.cache/zroot
+touch /mnt/etc/zfs/zfs-list.cache/zroot
 
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 12/' /etc/pacman.conf
 pacstrap /mnt base
