@@ -15,7 +15,7 @@ sed -i 's/#ParallelDownloads.*/ParallelDownloads = 12/' /etc/pacman.conf
 #sed -i 's/#IgnorePkg.*/IgnorePkg   = zfs-dkms/' /etc/pacman.conf
 pacman -Syy
 pacman -Fy
-pacman --noconfirm -S nvim sudo base-devel git less intel-ucode amd-ucode linux linux-headers efibootmgr pacman-contrib ntfs-3g
+pacman --noconfirm -S neovim sudo base-devel git less intel-ucode amd-ucode linux linux-headers efibootmgr pacman-contrib ntfs-3g
 echo 'EDITOR=nvim' >> /etc/environment
 echo '127.0.0.1 lausercotux localhost' >> /etc/hosts
 echo '::1 localhost' >> /etc/hosts
@@ -28,16 +28,18 @@ chown -R samuel:samuel /home/samuel
 # Arch ZFS repo source: https://wiki.archlinux.org/title/Unofficial_user_repositories#archzfs
 echo '
 [archzfs]
+# Origin Server - Finland
+Server = http://archzfs.com/$repo/$arch
+# Mirror - Germany
+Server = http://mirror.sum7.eu/archlinux/archzfs/$repo/$arch
+# Mirror - Germany
+Server = http://mirror.sunred.org/archzfs/$repo/$arch
+# Mirror - Germany
+Server = https://mirror.biocrafting.net/archlinux/archzfs/$repo/$arch
+# Mirror - India
+Server = https://mirror.in.themindsmaze.com/archzfs/$repo/$arch
 # Mirror - US
 Server = https://zxcvfdsa.com/archzfs/$repo/$arch
-# Origin Server - France
-Server = http://archzfs.com/$repo/x86_64
-# Mirror - Germany
-Server = http://mirror.sum7.eu/archlinux/archzfs/$repo/x86_64
-# Mirror - Germany
-Server = https://mirror.biocrafting.net/archlinux/archzfs/$repo/x86_64
-# Mirror - India
-Server = https://mirror.in.themindsmaze.com/archzfs/$repo/x86_64
 ' >> /etc/pacman.conf
 pacman-key --populate archlinux
 pacman-key --recv-keys F75D9D76

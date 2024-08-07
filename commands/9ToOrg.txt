@@ -1,19 +1,16 @@
-sudo pacman -S libptytty
 sudo pacman -S mpd vulkan-tools
 sudo usermod -a -G input -G mpd samuel
-yay -S rxvt-unicode-truecolor
 # copy file /etc/vconsole.conf
 sudo systemctl enable --now mpd
 # copy file ~/.Xresources
 
 
 sudo pacman -U https://archive.archlinux.org/packages/n/nvidia-open/nvidia-open-535.104.05-2-x86_64.pkg.tar.zst
-# remove kms from HOOKS in /etc/mkinitcpio.conf
 sudo reboot
 sudo pacman -S opencl-nvidia
 
 
-sudo pacman -S inter-font noto-fonts ttf-bitstream-vera ttf-caladea ttf-carlito ttf-cascadia-code ttf-cascadia-code-nerd ttf-croscore ttf-dejavu ttf-droid ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-inconsolata ttf-liberation ttf-opensans ttf-roboto ttf-ubuntu-font-family
+sudo pacman -S inter-font noto-fonts ttf-croscore ttf-dejavu ttf-droid ttf-fira-code ttf-fira-mono ttf-fira-sans ttf-inconsolata ttf-liberation ttf-opensans ttf-roboto ttf-ubuntu-font-family
 sudo pacman -S alsa-card-profiles alsa-lib alsa-plugins alsa-firmware alsa-utils gst-libav gst-plugin-pipewire gst-plugins-base gst-plugins-good gst-plugins-bad gst-plugins-ugly gstreamer gstreamer-vaapi libheif libpulse libraw pipewire pipewire-alsa pipewire-jack pipewire-pulse wireplumber x264 x265 xvidcore
 sudo pacman -S dolphin dolphin-plugins egl-wayland keepassxc kompare kwalletmanager kwrite networkmanager-qt packagekit-qt5 plasma-meta plasma-wayland-session sddm
 sudo pacman -S avahi curl dhclient dnsutils ethtool iptables-nft net-tools netctl networkmanager network-manager-applet nm-connection-editor nss-mdns systemd-resolvconf wget whois
