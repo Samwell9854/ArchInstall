@@ -16,6 +16,8 @@ sed -i 's/#AllowHybridSleep=.*/AllowHybridSleep=no/' /etc/systemd/sleep.conf
 sed -i 's/#AllowSuspend=.*/AllowSuspend=no/' /etc/systemd/sleep.conf
 
 sudo usermod -a -G power,lp,uucp,users,rfkill samuel
+# This line is here because it requires the pkg found in AUR before configuring - installed in script #3
+sed -i 's/lzip -c/plzip -c/' /etc/makepkg.conf
 
 sed -i.bak 's/MODULES=()/MODULES=(zfs)/' /etc/mkinitcpio.conf
 sed -i 's/HOOKS=(.*/HOOKS=\(base udev autodetect modconf keyboard block zfs filesystems\)/' /etc/mkinitcpio.conf

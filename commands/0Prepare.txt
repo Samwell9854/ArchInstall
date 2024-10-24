@@ -1,8 +1,8 @@
-# First two commands commented in, use if curl cmd doesn't work
-#pacman-key --init
-#pacman-key --populate
-# Add ZFS
-curl -s https://raw.githubusercontent.com/eoli3n/archiso-zfs/master/init | bash
-# source: https://github.com/eoli3n/archiso-zfs
-pacman -Syy
+# eoli3n method doesn't work anymore as upstream still hasn't updated in over 3 months now (2024-10)
+# This is done in ArchISO
+useradd -m samuel
+usermod -a -G wheel samuel
+visudo # to allow nopasswd for wheel
+su samuel
+# run commands from script 3CommandsAsUser to install ONLY yay and zfs-dkms
 git clone https://github.com/Samwell9854/ArchInstall.git
