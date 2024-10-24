@@ -1,3 +1,5 @@
+# manpages
+sudo pacman --noconfirm -S man man-pages
 # Cloud files sync
 sudo pacman -S nextcloud-client
 yay -S onedrive-abraunegg ldc liblphobos
@@ -20,13 +22,3 @@ sudo pacman -S python-nautilus
 
 # Evolution EWS
 sudo pacman -S evolution-ews
-
-# zsh
-sudo pacman -S zsh zsh-completions
-sudo chsh -s /bin/zsh
-chsh -s /bin/zsh
-sudo pacman -S zoxide
-## check for zoxide.vim for neovim plugin
-sudo pacman -S ruby
-yay -S oh-my-zsh-git
-

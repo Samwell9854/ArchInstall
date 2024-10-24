@@ -1,9 +1,13 @@
 [Match]
+Name=en*
 Name=eth*
 
 [Network]
-DHCP=ipv4
+DHCP=yes
 
-[DHCP]
-RouteMetric=10
+[DHCPv4]
+RouteMetric=100
+
+[IPv6AcceptRA]
+RouteMetric=100
 

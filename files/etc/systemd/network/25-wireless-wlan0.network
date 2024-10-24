@@ -1,9 +1,12 @@
 [Match]
-Name=wlan0
+Name=wlan*
 
 [Network]
-DHCP=ipv4
+DHCP=yes
 
-[DHCP]
-RouteMetric=20
+[DHCPv4]
+RouteMetric=600
+
+[IPv6AcceptRA]
+RouteMetric=600
 

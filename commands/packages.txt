@@ -1,7 +1,7 @@
 # System diag
 sudo htop lsof strace gptfdisk dosfstools smartmontools criu
 # Network
-curl wget dhcpcd nmap
+curl wget nmap
 # pacman
 pacman-contrib pacman-mirrorlist
 # cli
