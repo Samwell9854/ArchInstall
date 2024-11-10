@@ -24,6 +24,11 @@ sed -i 's/HOOKS=(.*/HOOKS=\(base udev autodetect modconf keyboard block zfs file
 # If issues, use this command instead:
 #sed -i 's/HOOKS=(.*/HOOKS=\(base udev autodetect modconf kms keyboard block zfs filesystems\)/' /etc/mkinitcpio.conf
 mkinitcpio -p linux
+# ZBM fix for v2.3.0
+sed -i.bak 's/ManageImages: false/ManageImages: true/' /etc/zfsbootmenu/config.yaml
+sed -i '11s/Enabled: true/Enabled: false/' /etc/zfsbootmenu/config.yaml
+sed -i 's/Versions: false/Versions: 3/' /etc/zfsbootmenu/config.yaml
+sed -i '15s/Enabled: false/Enabled: true/' /etc/zfsbootmenu/config.yaml
 generate-zbm
 systemctl enable zfs-import-cache.service
 systemctl enable zfs-import.target
