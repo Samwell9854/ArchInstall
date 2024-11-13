@@ -4,7 +4,8 @@ sudo usermod -a -G docker samuel
 sudo systemctl enable docker.service
 
 # qemu libvirtd virt-manager
-sudo pacman --noconfirm -S bridge-utils libvirt qemu-base qemu-block-iscsi virt-manager virtio-win
+sudo pacman --noconfirm -S libvirt qemu-base qemu-block-iscsi virt-manager
+yay -S virtio-win
 
 # Bridged network
 echo '

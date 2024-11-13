@@ -66,14 +66,13 @@ zfs mount -a
 swapon /dev/zvol/zroot/swap
 zpool set bootfs=zroot/ROOT/${ID} zroot
 zpool set cachefile=/etc/zfs/zpool.cache zroot
-mkdir -p /mnt/etc/zfs
+mkdir -p /mnt/etc/zfs/zfs-list.cache
 cp /etc/zfs/zpool.cache /mnt/etc/zfs/zpool.cache
 mkfs.vfat -F32 "$BOOT_DEVICE"
 mkdir -p /mnt/boot/efi
 mount "$BOOT_DEVICE" /mnt/boot/efi
 
-mkdir /mnt/etc/zfs/zfs-list.cache
-touch /mnt/etc/zfs/zfs-list.cache/zroot
+cp /etc/zfs/zfs-list.cache/zroot /mnt/etc/zfs/zfs-list.cache/zroot
 
 sed -i 's/#ParallelDownloads = 5/ParallelDownloads = 12/' /etc/pacman.conf
 pacstrap /mnt base
