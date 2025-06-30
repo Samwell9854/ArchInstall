@@ -1,4 +1,4 @@
-export KERNEL="linux"
+export KERNEL="linux-lts"
 # Configure EFI boot, services and some apps
 source /etc/os-release
 export ID
@@ -30,12 +30,13 @@ sed -i.bak 's/ManageImages: false/ManageImages: true/' /etc/zfsbootmenu/config.y
 sed -i '11s/Enabled: true/Enabled: false/' /etc/zfsbootmenu/config.yaml
 #sed -i 's/Versions: false/Versions: 3/' /etc/zfsbootmenu/config.yaml    # version number of zfsbootmenu also gets written
 sed -i '15s/Enabled: false/Enabled: true/' /etc/zfsbootmenu/config.yaml
-generate-zbm
+generate-zbm -i
 systemctl enable zfs-import-cache.service
 systemctl enable zfs-import.target
 systemctl enable zfs.target
 systemctl enable zfs-zed.service
 systemctl enable zfs-scrub-weekly@zroot.timer
+systemctl enable zfs-trim-weekly@zroot.timer
 systemctl enable systemd-timesyncd
 systemctl enable systemd-networkd.service
 systemctl enable systemd-resolved.service

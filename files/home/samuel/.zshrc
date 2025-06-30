@@ -132,9 +132,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User added
 if [[ "$USERNAME" == "root" ]]; then
-    PROMPT='%F{red}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f %# '
+    PROMPT='%F{red}%n%f@%F{magenta}%m%f:%F{blue}%B%~%b%f%# '
 else
-    PROMPT='%F{green}%n%f@%F{magenta}%m%f %F{blue}%B%~%b%f %# '
+    PROMPT='%F{green}%n%f@%F{magenta}%m%f:%F{blue}%B%~%b%f$ '
 fi
 
 # This is done by ZSH plugins

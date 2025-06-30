@@ -1,11 +1,12 @@
 # docker
-sudo pacman --noconfirm -S docker
+sudo pacman --noconfirm -S docker docker-compose
 sudo usermod -a -G docker samuel
-sudo systemctl enable docker.service
+sudo systemctl enable docker.socket
 
-# qemu libvirtd virt-manager
-sudo pacman --noconfirm -S libvirt qemu-base qemu-block-iscsi virt-manager
+# qemu libvirtd virt-manager iscsi
+sudo pacman --noconfirm -S libvirt qemu-base qemu-block-iscsi virt-manager open-iscsi qemu-hw-display-qxl qemu-hw-display-virtio-gpu qemu-hw-display-virtio-gpu-pci qemu-hw-usb-redirect qemu-chardev-spice qemu-audio-spice
 yay -S virtio-win
+sudo systemctl enable iscsid.socket
 
 # Bridged network
 echo '

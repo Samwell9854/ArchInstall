@@ -1,5 +1,5 @@
 export HOSTNAME="lausercosamtux"
-export KERNEL="linux"
+export KERNEL="linux-lts"
 # Configure the OS + ZFS repo
 echo password for root
 passwd
@@ -17,7 +17,7 @@ sed -i 's/#ParallelDownloads.*/ParallelDownloads = 12/' /etc/pacman.conf
 #sed -i 's/#IgnorePkg.*/IgnorePkg   = zfs-dkms/' /etc/pacman.conf
 pacman -Syy
 pacman -Fy
-pacman --noconfirm -S vim pigz pbzip2 sudo base-devel git less intel-ucode amd-ucode "$KERNEL" "$KERNEL-headers" efibootmgr pacman-contrib ntfs-3g
+pacman --noconfirm -S vim pigz pbzip2 sudo base-devel git less intel-ucode amd-ucode "$KERNEL" "$KERNEL-headers" efibootmgr pacman-contrib ntfs-3g dmidecode
 echo 'EDITOR=vim' >> /etc/environment
 sed -i.bak 's/#MAKEFLAGS=.*/MAKEFLAGS="-j$(nproc)"/' /etc/makepkg.conf
 sed -i 's/RUSTFLAGS=.*/RUSTFLAGS="-C opt-level=2 -C target-cpu=native -C link-arg=-fuse-ld=mold"/' /etc/makepkg.conf
